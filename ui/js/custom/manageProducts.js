@@ -50,16 +50,14 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 // Save Product
-document.getElementById("saveProduct").addEventListener("click", function () {
+document.getElementById("saveProduct").addEventListener("click", async function () {
   var data = new FormData(document.getElementById("productForm"));
   var requestPayload = {
     product_name: data.get("name"),
     uom_id: data.get("uoms"),
     price_per_unit: data.get("price"),
   };
-  callApi("POST", productSaveApiUrl, {
-    data: JSON.stringify(requestPayload),
-  });
+  await callApi("POST", productSaveApiUrl,JSON.stringify(requestPayload));
 });
 
 //Event listener for deleting the product

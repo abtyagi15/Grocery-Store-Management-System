@@ -19,7 +19,9 @@ async function callApi(method, url, data) {
             body: JSON.stringify(data)
             
         });
-        console.log(response.product_id);
+        console.log("Data after calling the fetch request : "+JSON.stringify(data));
+
+        console.log(response);
         // if (!response.ok) {
         //     throw new Error('Network response was not ok');
         // }

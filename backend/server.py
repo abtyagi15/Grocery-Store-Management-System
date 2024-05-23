@@ -47,10 +47,12 @@ def get_all_orders():
 
 @app.route('/insertOrder', methods=['POST'])
 def insert_order():
-    request_payload = json.loads(request.form['data'])
-    order_id = order_dao.insert_order(connection, request_payload)
+    request_payload = request.get_json()
+    request_payload = request_payload.get('product_name')
+    # order_id = order_dao.insert_order(connection, request_payload)
     response = jsonify({
-        'order_id': order_id
+        # 'order_id': order_id
+        'order_id': request_payload 
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
